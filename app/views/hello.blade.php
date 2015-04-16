@@ -8,6 +8,10 @@
 @stop
 @section('content')
 
-Homepage bitches :D
-
+	Homepage bitches :D
+	@if(Session::has('success'))
+		<div class="alert alert-success">{{Session::get('success')}}</div>
+	@elseif(Session::has('fail'))
+		<div class="alert alert-danger">{{Session::get('fail')}}</div>
+	@endif
 @stop
