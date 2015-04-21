@@ -14,17 +14,23 @@
 			<div class="form-group{{($errors->has('username'))? 'has-error':''}}">
 				<label for="username">Username</label>
 				<input id="username" name="username" type="text" class="form-control">
-				
+				@if($errors->has('username'))
+					{{$errors->first('username')}}
+				@endif
 			</div
 			<div class="form-group{{($errors->has('pass1'))? 'has-error':''}}">
 				<label for="pass1">Password</label>
 				<input id="pass1" name="pass1" type="password" class="form-control">
-				
+				@if($errors->has('pass1'))
+					{{$errors->first('pass1')}}
+				@endif
 			</div>
 			<div class="form-group{{($errors->has('pass2'))? 'has-error':''}}">
 				<label for="pass2">Confirm Password</label>
 				<input id="pass2" name="pass2" type="password" class="form-control">
-				
+				@if($errors->has('pass2'))
+					{{$errors->first('pass2')}}
+				@endif
 			</div>
 			<div class="form-group{{($errors->has('pass2'))? 'has-error':''}}">
 				<label for="email">Email</label>

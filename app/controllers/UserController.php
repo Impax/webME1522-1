@@ -44,7 +44,34 @@ class UserController extends BaseController
 
 	public function postLogin()
 	{
+		$validate = Validator::make(Input::all(), array(
+			'username' => 'required',
+			'pass1' => 'required'
+		));
 		
+		if($validate ->fails()){
+			return Redirect::route('getLogin')-> withErrors($validate)->withInput();
+		}
+		else{
+			$remember = (Input::has('remember')) ? true : false;
+			
+			$auth = Auth::attempt(array(
+				'username' => Input::get('username'),
+				'password' => Input::get('pass1')
+			), $remember);
+			if($auth){
+				return Redirect::route('home');
+			}
+			else{
+				return Redirect::route('getLogin')-> with('fail','You entered the wrong login credentals, please try again.');
+			}
+		}
+	}
+	
+	public function getLogout()
+	{
+		Auth::logout();
+		return redirect('home');
 	}
 }
 

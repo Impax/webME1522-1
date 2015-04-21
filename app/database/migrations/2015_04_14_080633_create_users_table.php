@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration {
 			$table->string('password');
 			$table->string('email');
 			$table->enum('isAdmin',array(0,1))->default(0);
+			$table->string('remeber_token');
 			$table->timestamps();
 		});
 	}
